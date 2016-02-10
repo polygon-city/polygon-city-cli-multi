@@ -1,4 +1,4 @@
-# Polygon City CLI Multi-Directory
+# Polygon City CLI Multi-File
 
 ## Requirements
 
