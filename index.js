@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 // TODO: Allow CLI options to be defined and passed through
 
 var Promise = require('bluebird');
