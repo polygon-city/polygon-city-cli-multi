@@ -78,6 +78,21 @@ var processFiles = function(inputDirectory, options) {
         args.push(options.prefix);
       }
 
+      if (options.elevation) {
+        args.push('-el');
+        args.push(options.elevation);
+      }
+
+      if (options.wof) {
+        args.push('-w');
+        args.push(options.wof);
+      }
+
+      if (options.license) {
+        args.push('-l');
+        args.push(options.license);
+      }
+
       args.push('-o');
 
       var output = (options.prefix) ? options.prefix + bareName : bareName;
@@ -114,7 +129,9 @@ var processFiles = function(inputDirectory, options) {
     });
 
     // Remove empties
-    geojsonIndexPaths = geojsonIndexPaths.filter(function(n) { return n != undefined });
+    geojsonIndexPaths = geojsonIndexPaths.filter(function(n) {
+      return n !== undefined;
+    });
 
     // console.log(geojsonIndexPaths);
 
@@ -161,6 +178,9 @@ program
   .option('-e, --epsg [code]', 'EPSG code for input data')
   .option('-m, --mapzen [key]', 'Mapzen Elevation API key')
   .option('-p, --prefix [prefix]', 'Prefix for building IDs')
+  .option('-el, --elevation [url]', 'Elevation endpoint')
+  .option('-w, --wof [url]', 'Who\'s On First endpoint')
+  .option('-l, --license [license]', 'License text')
   .option('-o, --output [directory]', 'Output directory')
   .action(processFiles);
 
