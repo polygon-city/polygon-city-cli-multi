@@ -88,6 +88,11 @@ var processFiles = function(inputDirectory, options) {
         args.push(options.wof);
       }
 
+      if (options.attribution) {
+        args.push('-a');
+        args.push(options.attribution);
+      }
+
       if (options.license) {
         args.push('-l');
         args.push(options.license);
@@ -180,6 +185,7 @@ program
   .option('-p, --prefix [prefix]', 'Prefix for building IDs')
   .option('-el, --elevation [url]', 'Elevation endpoint')
   .option('-w, --wof [url]', 'Who\'s On First endpoint')
+  .option('-a, --attribution [attribution]', 'Attribution text')
   .option('-l, --license [license]', 'License text')
   .option('-o, --output [directory]', 'Output directory')
   .action(processFiles);
