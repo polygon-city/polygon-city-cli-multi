@@ -68,10 +68,10 @@ var processFiles = function(inputDirectory, options) {
 
       args = [];
 
-      args.push('-e');
+      args.push('-c');
       args.push(options.epsg);
-      args.push('-m');
-      args.push(options.mapzen);
+      args.push('-E');
+      args.push(options.elevationKey);
 
       if (options.prefix) {
         args.push('-p');
@@ -79,13 +79,18 @@ var processFiles = function(inputDirectory, options) {
       }
 
       if (options.elevation) {
-        args.push('-el');
+        args.push('-e');
         args.push(options.elevation);
       }
 
       if (options.wof) {
         args.push('-w');
         args.push(options.wof);
+      }
+
+      if (options.wofKey) {
+        args.push('-W');
+        args.push(options.wofKey);
       }
 
       if (options.attribution) {
@@ -138,8 +143,6 @@ var processFiles = function(inputDirectory, options) {
       return n !== undefined;
     });
 
-    // console.log(geojsonIndexPaths);
-
     // Get GeoJSON indexes
     async.map(geojsonIndexPaths, fs.readFile, (err, results) => {
       var envelopes = [];
@@ -180,11 +183,12 @@ var resumeJobs = function() {
 program
   .version('0.0.1')
   .usage('[options] <input directory>')
-  .option('-e, --epsg [code]', 'EPSG code for input data')
-  .option('-m, --mapzen [key]', 'Mapzen Elevation API key')
+  .option('-c, --epsg [code]', 'EPSG code for input data')
   .option('-p, --prefix [prefix]', 'Prefix for building IDs')
-  .option('-el, --elevation [url]', 'Elevation endpoint')
+  .option('-e, --elevation [url]', 'Elevation endpoint')
+  .option('-E, --elevationKey [key]', 'Mapzen Elevation API key')
   .option('-w, --wof [url]', 'Who\'s On First endpoint')
+  .option('-W, --wofKey [key]', 'Mapzen Who\'s on First API key')
   .option('-a, --attribution [attribution]', 'Attribution text')
   .option('-l, --license [license]', 'License text')
   .option('-o, --output [directory]', 'Output directory')
