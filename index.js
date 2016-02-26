@@ -48,7 +48,7 @@ var processFiles = function(inputDirectory, options) {
   }
 
   // Check Mapzen key
-  if (!options.mapzen) {
+  if (!options.elevationKey) {
     console.error(chalk.red('Exiting: Mapzen Elevation key not specified'));
     process.exit(1);
   }
