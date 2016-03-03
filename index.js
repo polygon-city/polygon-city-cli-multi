@@ -20,7 +20,7 @@ if (!shell.which("polygon-city")) {
 
 var processFiles = function(inputDirectory, options) {
   console.log('EPSG: %j', options.epsg);
-  console.log('Mapzen key: %j', options.mapzen);
+  console.log('Mapzen elevation key: %j', options.elevationKey);
 
   if (options.prefix) {
     console.log('Prefix: %j', options.prefix);
@@ -49,7 +49,7 @@ var processFiles = function(inputDirectory, options) {
 
   // Check Mapzen key
   if (!options.elevationKey) {
-    console.error(chalk.red('Exiting: Mapzen Elevation key not specified'));
+    console.error(chalk.red('Exiting: Mapzen elevation key not specified'));
     process.exit(1);
   }
 
