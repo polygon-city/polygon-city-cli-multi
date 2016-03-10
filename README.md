@@ -1,6 +1,6 @@
 # Polygon City CLI Multi-File
 
-Wrapper around `polygon-city-cli` to convert a directory of CityGML files into GeoJSON footprint indexes and 3D models (obj & collada)
+Wrapper around [`polygon-city-cli`](https://github.com/polygon-city/polygon-city-cli) to convert a directory of CityGML files into GeoJSON footprint indexes and 3D models (obj & collada)
 
 ## Requirements
 
